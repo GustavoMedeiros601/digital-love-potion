@@ -10,7 +10,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Para você — Feliz Dia dos Namorados" },
+      { title: "Para a Ró" },
       { name: "description", content: "Um pequeno presente digital feito com carinho, código e um pouco de magia." },
       { property: "og:title", content: "Para a futura médica mais incrível que eu conheço" },
       { property: "og:description", content: "Um presente feito com carinho, código e um pouco de magia." },
