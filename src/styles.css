@@ -1,0 +1,162 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-lilac: var(--lilac);
+  --color-rose-soft: var(--rose-soft);
+  --color-coraline: var(--coraline);
+  --color-midnight: var(--midnight);
+  --color-plum: var(--plum);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-script: "Caveat", "Dancing Script", cursive;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Dark cute / magical medicine palette */
+  --background: oklch(0.16 0.045 295);
+  --foreground: oklch(0.96 0.015 320);
+
+  --card: oklch(0.22 0.055 295);
+  --card-foreground: oklch(0.96 0.015 320);
+  --popover: oklch(0.2 0.05 295);
+  --popover-foreground: oklch(0.96 0.015 320);
+
+  --primary: oklch(0.78 0.13 330);              /* soft pink */
+  --primary-foreground: oklch(0.18 0.05 295);
+  --secondary: oklch(0.32 0.09 295);             /* deep plum */
+  --secondary-foreground: oklch(0.96 0.015 320);
+  --muted: oklch(0.27 0.05 295);
+  --muted-foreground: oklch(0.78 0.04 320);
+  --accent: oklch(0.72 0.14 305);                /* lilac */
+  --accent-foreground: oklch(0.16 0.045 295);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.35 0.06 300 / 60%);
+  --input: oklch(0.3 0.05 295 / 80%);
+  --ring: oklch(0.72 0.14 305);
+
+  --lilac: oklch(0.78 0.12 305);
+  --rose-soft: oklch(0.82 0.1 350);
+  --coraline: oklch(0.65 0.15 245);              /* coraline blue */
+  --midnight: oklch(0.18 0.05 270);
+  --plum: oklch(0.28 0.08 310);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at top, oklch(0.24 0.08 305 / 0.6), transparent 60%),
+      radial-gradient(ellipse at bottom right, oklch(0.22 0.1 245 / 0.45), transparent 55%),
+      linear-gradient(180deg, oklch(0.14 0.04 280), oklch(0.12 0.05 295) 50%, oklch(0.15 0.06 310));
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility stitched {
+  border: 1.5px dashed oklch(0.78 0.1 330 / 0.5);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.16 0.045 295),
+    0 10px 30px -10px oklch(0.4 0.15 305 / 0.4);
+}
+
+@utility glow-pink {
+  box-shadow:
+    0 0 0 1px oklch(0.78 0.13 330 / 0.3),
+    0 10px 40px -10px oklch(0.78 0.13 330 / 0.5);
+}
+
+@utility card-magic {
+  background: linear-gradient(
+    145deg,
+    oklch(0.24 0.06 300 / 0.85),
+    oklch(0.2 0.07 280 / 0.75)
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.6 0.1 310 / 0.25);
+  border-radius: var(--radius-2xl);
+}
+
+@utility text-gradient {
+  background: linear-gradient(120deg, var(--rose-soft), var(--lilac) 50%, var(--coraline));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility starry {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, oklch(0.95 0.02 320 / 0.8), transparent 50%),
+    radial-gradient(1px 1px at 70% 60%, oklch(0.88 0.1 305 / 0.7), transparent 50%),
+    radial-gradient(1.5px 1.5px at 40% 80%, oklch(0.9 0.05 245 / 0.6), transparent 50%),
+    radial-gradient(1px 1px at 85% 20%, oklch(0.95 0.02 320 / 0.7), transparent 50%),
+    radial-gradient(1px 1px at 10% 70%, oklch(0.85 0.1 330 / 0.6), transparent 50%);
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.12); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.08); }
+}
+
+@utility animate-float { animation: float-soft 6s ease-in-out infinite; }
+@utility animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+@utility animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
